@@ -2,6 +2,10 @@ import React, {useState} from 'react'
 
 const AddUserForm = (props) => {
 
+    const addButton = {
+        "backgroundColor": "lightgreen"
+    }
+
     const initForm = {id:null, name:'', username:'', email:'', age:null}
     const [user, setUser] = useState(initForm)
     const handleInputChange = (event) => {
@@ -15,7 +19,14 @@ const AddUserForm = (props) => {
 
     return (
 
-        <form onSubmit={
+        <form
+            style={
+                {
+                    display: 'flex',
+                    flexDirection: 'column',
+                }
+            }
+            onSubmit={
             (event) =>{
                 
                 event.preventDefault()
@@ -26,11 +37,18 @@ const AddUserForm = (props) => {
                 setUser(initForm)
             }
         }>
+            <label >Nome</label>
             <input type="text" name='name' value={user.name} onChange={handleInputChange} placeholder="Nome" />
+            
+            <label>Username</label>
             <input type="text" name="username" value={user.username} onChange={handleInputChange} placeholder="Nickname" />
+            
+            <label>Email</label>
             <input type="email" name="email" value={user.email} onChange={handleInputChange} placeholder="Email" />
+            
+            <label>Idade</label>
             <input type="number" name="age" value={user.age} onChange={handleInputChange} placeholder="idade" />
-            <button>Registrar</button>
+            <button style= {addButton}>Registrar</button>
 
         </form>
 
